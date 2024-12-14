@@ -3,9 +3,9 @@ package main
 import "fmt"
 
 func main() {
-	names := []string{"Davi", "Joelma", "Laura", "Sarah"}
+	names := make([]string, 0)
+	ages := make([]int, 10, 20)
 
-	names = append(names, "Bony")
-
-	fmt.Println(names, len(names), cap(names))
+	fmt.Println(names)
+	fmt.Println(ages)
 }
