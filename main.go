@@ -2,12 +2,23 @@ package main
 
 import "fmt"
 
-var name string
+var (
+	name string
+	age  int
+)
 
 func main() {
-	name = "Davi Silva"
+	var (
+		fullname   string
+		occupation string
+	)
 
-	fmt.Println("Hello")
+	fullname = "Davi Silva"
+	occupation = "Software Engineer"
 
-	sayHello()
+	message := "Go 101 - lesson 03"
+
+	fmt.Println(message)
+	fmt.Println(fullname)
+	fmt.Println(occupation)
 }
