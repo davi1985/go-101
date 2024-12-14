@@ -2,16 +2,21 @@ package main
 
 import "fmt"
 
+type Person struct {
+	Name       string
+	Age        uint8
+	Occupation string
+}
+
 func main() {
-	ages := make(map[string]uint8)
-	ages["davi"] = 39
-	ages["joelma"] = 34
-	ages["laura"] = 2
+	davi := Person{
+		Name:       "Davi Silva",
+		Occupation: "Software Engineer",
+		Age:        39,
+	}
 
-	fmt.Println(ages)
+	joelma := Person{"Joelma", 36, "Wife"}
 
-	val, ok := ages["davi"]
-	fmt.Println(val, ok)
-	value, has := ages["bony"]
-	fmt.Println(value, has)
+	fmt.Println(davi)
+	fmt.Println(joelma)
 }
