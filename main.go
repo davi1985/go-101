@@ -3,7 +3,9 @@ package main
 import "fmt"
 
 func main() {
-	for i := 0; i < 10; i++ {
-		fmt.Println(i)
+	names := []string{"Davi", "Joelma", "Laura", "Sarah"}
+
+	for _, name := range names {
+		fmt.Println(name)
 	}
 }
