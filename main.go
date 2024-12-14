@@ -2,6 +2,12 @@ package main
 
 import "fmt"
 
+var name string
+
 func main() {
-	fmt.Println("Hello Golang")
+	name = "Davi Silva"
+
+	fmt.Println("Hello")
+
+	sayHello()
 }
