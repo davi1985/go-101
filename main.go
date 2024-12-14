@@ -4,10 +4,8 @@ import "fmt"
 
 func main() {
 	names := []string{"Davi", "Joelma", "Laura", "Sarah"}
-	var i int
 
-	for i < len(names) {
-		fmt.Println(names[i])
-		i++
-	}
+	names = append(names, "Bony")
+
+	fmt.Println(names, len(names), cap(names))
 }
