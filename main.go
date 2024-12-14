@@ -4,8 +4,10 @@ import "fmt"
 
 func main() {
 	names := []string{"Davi", "Joelma", "Laura", "Sarah"}
+	var i int
 
-	for _, name := range names {
-		fmt.Println(name)
+	for i < len(names) {
+		fmt.Println(names[i])
+		i++
 	}
 }
