@@ -1,35 +1,27 @@
 package main
 
-import (
-	"fmt"
-	"log"
-	"os"
+import "fmt"
+
+var (
+	heads, tails int
 )
 
+func throwCoin(side string) {
+	switch side {
+	case "heads":
+		heads++
+	case "tails":
+		tails++
+
+	default:
+		fmt.Println("try again")
+	}
+}
+
 func main() {
-	a, b := 10, 20
 
-	if a > b {
-		fmt.Println("a > b")
-	} else if a < b {
-		fmt.Println("a < b")
-	} else {
-		fmt.Println("a equals b")
-	}
+	throwCoin("heads")
 
-	file, err := os.Open("hello.txt")
-
-	if err != nil {
-		log.Panic(err)
-
-		return
-	}
-
-	data := make([]byte, 100)
-
-	if _, err := file.Read(data); err != nil {
-		log.Panic(err)
-	}
-
-	fmt.Println(string(data))
+	fmt.Println(heads)
+	fmt.Println(tails)
 }
