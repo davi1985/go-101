@@ -2,37 +2,34 @@ package main
 
 import (
 	"fmt"
-	"strconv"
+	"log"
+	"os"
 )
 
-func sum(a, b int) int {
-	return a + b
-}
+func main() {
+	a, b := 10, 20
 
-func sayHello(name string) {
-	fmt.Println(name)
-}
+	if a > b {
+		fmt.Println("a > b")
+	} else if a < b {
+		fmt.Println("a < b")
+	} else {
+		fmt.Println("a equals b")
+	}
 
-func convertAndSum(a int, b string) (total int, err error) {
-	i, err := strconv.Atoi(b)
+	file, err := os.Open("hello.txt")
 
 	if err != nil {
+		log.Panic(err)
+
 		return
 	}
 
-	total = a + i
-	return
-}
+	data := make([]byte, 100)
 
-func main() {
-	sayHello("Davi Silva")
-	fmt.Println("Total:", sum(1, 2))
-
-	total, err := convertAndSum(1, "5")
-
-	if err != nil {
-		fmt.Println((err))
+	if _, err := file.Read(data); err != nil {
+		log.Panic(err)
 	}
 
-	fmt.Println("Total:", total)
+	fmt.Println(string(data))
 }
