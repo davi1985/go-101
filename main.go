@@ -1,34 +1,28 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
-type Person struct {
-	Name   string
-	Age    uint8
-	Status bool
+func numbers() {
+	for i := 0; i < 10; i++ {
+		fmt.Printf("%d \n", i)
+		time.Sleep(time.Millisecond * 150)
+	}
 }
 
-func (p Person) String() string {
-	return fmt.Sprintf("I'm %s, I'm %d", p.Name, p.Age)
-}
-
-type NaturalPerson struct {
-	Person
-	lastName string
-	cpf      string
-}
-
-type LegalEntity struct {
-	cnpj          string
-	corporateName string
+func letters() {
+	for i := 'a'; i < 'l'; i++ {
+		fmt.Printf("%c \n", i)
+		time.Sleep(time.Millisecond * 230)
+	}
 }
 
 func main() {
-	person1 := NaturalPerson{
-		Person:   Person{Name: "Davi", Age: 39, Status: true},
-		lastName: "Silva",
-		cpf:      "001.002.003-44",
-	}
+	go numbers()
+	go letters()
 
-	fmt.Println(person1)
+	time.Sleep(3 * time.Second)
+	fmt.Println("End")
 }
