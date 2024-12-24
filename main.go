@@ -5,33 +5,26 @@ import (
 	"time"
 )
 
-func numbers(done chan<- bool) {
+func numbers(n chan<- int) {
 	for i := 0; i < 10; i++ {
+		n <- i
+		fmt.Printf("[Write by channel: %d ]", i)
 		fmt.Printf("%d ", i)
 		time.Sleep(time.Millisecond * 150)
 	}
-
-	done <- true
-}
-
-func letters(done chan<- bool) {
-	for i := 'a'; i < 'l'; i++ {
-		fmt.Printf("%c ", i)
-		time.Sleep(time.Millisecond * 230)
-	}
-
-	done <- true
+	fmt.Println("Write done")
+	close(n)
 }
 
 func main() {
-	ch1 := make(chan bool)
-	ch2 := make(chan bool)
+	ch1 := make(chan int, 3)
 
 	go numbers(ch1)
-	go letters(ch2)
 
-	<-ch1
-	<-ch2
+	for v := range ch1 {
+		fmt.Printf("read by channel: %d\n", v)
+		time.Sleep(time.Millisecond * 150)
+	}
 
 	fmt.Println("End")
 }
